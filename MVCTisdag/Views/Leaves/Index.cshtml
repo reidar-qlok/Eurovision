@@ -1,0 +1,30 @@
+﻿@model List<Leave>
+
+<h2>Registered Leaves</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Employee</th>
+            <th>Startdatum</th>
+            <th>Slutdatum</th>
+            <th>Type of leave</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        <tbody>
+            @foreach(var leave in Model)
+            {
+                <tr>
+                    <td>@leave.Employee.EmployeeName</td>
+                    <td>@leave.StartDate.ToShortDateString()</td>
+                    <td>@leave.EndDate.ToShortDateString()</td>
+                    <td>@leave.Type</td>
+                    <td>@leave.Status.ToString()</td>
+                    <td>
+                        <a asp-action="EditStatus" asp-route-id="@leave.LeaveId" class="btn btn-success">Ändra status</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </thead>
+</table>
